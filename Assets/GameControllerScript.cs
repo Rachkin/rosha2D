@@ -80,13 +80,14 @@ public class GameControllerScript : MonoBehaviour
                     //cube.transform.position = new Vector3(x, y, 0);
                     GameObject block = (GameObject)Instantiate(prefab, new Vector3(x, y, 0), Quaternion.identity);
                     block.name = y.ToString() + " " + x.ToString();
+                    Debug.Log(y.ToString() + " " + x.ToString());
                 }
                 else
                 {
                     GameObject block = GameObject.Find(y.ToString() + " " + x.ToString());
                     if(block != null)
                     {
-                        Debug.Log(10);
+                        
                         Destroy(GameObject.Find(y.ToString() + " " + x.ToString()));
                     }
                 }
@@ -94,12 +95,7 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
-    void updateCam()
-    {
-        GameObject cam = GameObject.Find("MainCamera");
-        cam.transform.position = new Vector3(my_y, my_x, -10);
-    }
-        // Start is called before the first frame update
+   
     void Start()
     {
         initPlayers();
@@ -111,6 +107,5 @@ public class GameControllerScript : MonoBehaviour
     void Update()
     {
         updateMap();
-        updateCam();
     }
 }
