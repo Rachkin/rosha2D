@@ -35,6 +35,7 @@ public class GameControllerScript : MonoBehaviour
 
     bool spriteInWind(int y, int x)
     {
+        return true;
         if(Mathf.Abs(my_y - y) < wind_y && Mathf.Abs(my_x - x) < wind_x)
         {
             return true;
@@ -56,8 +57,8 @@ public class GameControllerScript : MonoBehaviour
             new int[] {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
             new int[] {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
             new int[] {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
-            new int[] {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
-            new int[] {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
+            new int[] {1, 2, 2, 2, 2, 2, 2, 1, 1, 1},
+            new int[] {1, 2, 2, 2, 2, 2, 2, 1, 1, 1},
             new int[] {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
             new int[] {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
             new int[] {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
@@ -78,7 +79,7 @@ public class GameControllerScript : MonoBehaviour
                     GameObject prefab = GOs[map[y][x]];
                     //cube.AddComponent<Rigidbody>();
                     //cube.transform.position = new Vector3(x, y, 0);
-                    GameObject block = (GameObject)Instantiate(prefab, new Vector3(x, y, 0), Quaternion.identity);
+                    GameObject block = (GameObject)Instantiate(prefab, new Vector3(x, 0, y), Quaternion.identity);
                     block.name = y.ToString() + " " + x.ToString();
                     Debug.Log(y.ToString() + " " + x.ToString());
                 }
@@ -101,11 +102,13 @@ public class GameControllerScript : MonoBehaviour
         initPlayers();
 
         initMap();
+
+        updateMap();
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateMap();
+        
     }
 }
